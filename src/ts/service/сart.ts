@@ -12,25 +12,18 @@ export default class Cart {
   };
 
   sum(): number {
-    let arr = this.items; 
-    let sum = arr.reduce((result: number, arr) => {
+    return this.items.reduce((result: number, arr) => {
       return result + arr.price;
     }, 0);
-    
-    return sum;
   };
 
   sumSale(discount: number): number {
     let sum = this.sum();
-    if ((discount > 0) && (discount < 1)) {
-      return sum * (1 - discount);
-    } else {
-      return sum * (1 - discount / 100);
-    };
+    return ((discount > 0) && (discount < 1)) ? sum * (1 - discount) : sum * (1 - discount / 100);
   };
 
   delete(id: number): Buyable[] {
-    this._items = this._items.filter(item => item.id !== id);
+    this._items = this.items.filter(item => item.id !== id);
     return this.items;
   };
 }
