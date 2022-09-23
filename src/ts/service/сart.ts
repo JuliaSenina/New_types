@@ -22,8 +22,7 @@ export default class Cart {
     return ((discount > 0) && (discount < 1)) ? sum * (1 - discount) : sum * (1 - discount / 100);
   };
 
-  delete(id: number): Buyable[] {
+  delete(id: number): void {
     this._items = this.items.filter(item => item.id !== id);
-    return this.items;
   };
 }
